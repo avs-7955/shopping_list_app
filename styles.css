@@ -13,18 +13,18 @@ html, body {
 .box {
     border: solid #432000;
     border-radius: 10px;
+    display: grid;
+    padding: 3% 0%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 30vw;
-    padding: 3% 0%;
-    display: grid;
 }
 .img_shopping {
-    width: 40%;
-    margin: auto;
     border-radius: 10px;
+    margin: auto;
+    width: 40%;
 }
 /* ---------------PLACEHOLDER TEXT COLORING --------------- */
 ::placeholder {
@@ -34,17 +34,18 @@ html, body {
 
 input {
     border: none;
+    border-radius: 10px;
     display: block;
-    color: #432000;
     background-color: #DCE1EB;
+    color: #432000;
+    caret-color: #432000;
     font-size: large;
     font-family: 'Rubik', sans-serif;
-    padding: 15px 20px;
-    width: 50%;
     margin: auto;
     margin-top: 5%;
-    border-radius: 10px;
+    padding: 15px 20px;
     text-align: center;
+    width: 50%;
 }
 input:focus, textarea:focus {
     outline: 0;
@@ -62,4 +63,16 @@ button {
     display: block;
     color: #FDFDFD;
     background-color: #AC485A;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 1000px) {
+    .box {
+        width: 50vw;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .box {
+        width: 80vw;
+    }
 }
