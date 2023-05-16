@@ -24,8 +24,16 @@ const shopping_list = document.getElementById("shopping_list")
 
 add_btn.addEventListener("click", function () {
 	let input_item = item_text.value
-	item_text.value = "" // to clear input field after submit
+	clearItemText()
 	push(shoppingListInDB, input_item)
-	shopping_list.innerHTML += `<li> ${input_item} </li>` // appending the new item to HTML
+	appendItemToShoppingList(input_item)
 	console.log(input_item)
 })
+
+function clearItemText() {
+	item_text.value = "" // to clear input field after submit
+}
+
+function appendItemToShoppingList(item) {
+	shopping_list.innerHTML += `<li> ${item} </li>`
+}
