@@ -3,6 +3,7 @@ import {
 	getDatabase,
 	ref,
 	push,
+	onValue,
 } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js"
 
 // https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js
@@ -26,12 +27,23 @@ add_btn.addEventListener("click", function () {
 	let input_item = item_text.value
 	clearItemText()
 	push(shoppingListInDB, input_item)
-	appendItemToShoppingList(input_item)
 	console.log(input_item)
+})
+
+onValue(shoppingListInDB, function (snapshot) {
+	let items = Object.values(snapshot.val())
+	clearShoppingList()
+	for (let i = 0; i < items.length; i++) {
+		appendItemToShoppingList(items[i])
+	}
 })
 
 function clearItemText() {
 	item_text.value = "" // to clear input field after submit
+}
+
+function clearShoppingList() {
+	shopping_list.innerHTML = "" // to clear the Shopping List everytime an update is done to the database
 }
 
 function appendItemToShoppingList(item) {
